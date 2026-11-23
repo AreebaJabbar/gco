@@ -23,9 +23,9 @@ export default async function ProjectsPage() {
         bgPosition="center 25%"
       />
 
-      <section className="py-16 px-5 max-w-7xl mx-auto space-y-16">
+      <section className="py-12 sm:py-16 px-4 sm:px-6 max-w-7xl mx-auto space-y-12 sm:space-y-16">
         <div className="max-w-3xl mx-auto text-center">
-          <p className="text-slate-700 text-base md:text-lg font-medium leading-relaxed">
+          <p className="text-slate-700 text-sm sm:text-base md:text-lg font-medium leading-relaxed">
             Our Seven main projects are designed to address the essential needs of vulnerable communities and create lasting positive change.
           </p>
         </div>
@@ -36,16 +36,16 @@ export default async function ProjectsPage() {
           const highlights = Array.isArray(p.highlights) ? p.highlights : [];
 
           return (
-            <div key={p.slug || p.id} className="grid md:grid-cols-2 gap-10 items-center">
+            <div key={p.slug || p.id} className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10 items-center">
               <div className={i % 2 === 1 ? 'md:order-2' : ''}>
                 {img ? (
                   <img
                     src={img}
                     alt={p.title}
-                    className="rounded-2xl w-full h-80 object-cover card-shadow border border-silver/30"
+                    className="rounded-2xl w-full h-56 sm:h-72 md:h-80 object-cover card-shadow border border-silver/30"
                   />
                 ) : (
-                  <div className="rounded-2xl w-full h-80 card-shadow dots-bg bg-gradient-to-br from-navy to-brand flex items-center justify-center text-white/90 text-7xl">
+                  <div className="rounded-2xl w-full h-56 sm:h-72 md:h-80 card-shadow dots-bg bg-gradient-to-br from-navy to-brand flex items-center justify-center text-white/90 text-6xl sm:text-7xl">
                     <i className={`fa-solid ${icon}`}></i>
                   </div>
                 )}
@@ -60,15 +60,15 @@ export default async function ProjectsPage() {
                 >
                   {p.status || 'Ongoing'}
                 </span>
-                <h2 className="font-display font-bold text-2xl md:text-3xl mb-1 text-navy">
+                <h2 className="font-display font-bold text-xl sm:text-2xl md:text-3xl mb-1 text-navy">
                   {p.title}
                 </h2>
                 {p.subtitle && (
-                  <div className="text-brand font-semibold text-sm mb-3">
+                  <div className="text-brand font-semibold text-xs sm:text-sm mb-3">
                     {p.subtitle}
                   </div>
                 )}
-                <p className="text-slate-600 leading-relaxed mb-4 text-sm md:text-base">
+                <p className="text-slate-600 leading-relaxed mb-4 text-xs sm:text-sm md:text-base">
                   {p.description}
                 </p>
 
@@ -81,8 +81,8 @@ export default async function ProjectsPage() {
                     )}
                     <ul className="space-y-2">
                       {highlights.map((h) => (
-                        <li key={h} className="flex gap-2.5 text-sm text-slate-700">
-                          <i className="fa-solid fa-circle-check mt-1 text-leaf shrink-0"></i>
+                        <li key={h} className="flex gap-2.5 text-xs sm:text-sm text-slate-700">
+                          <i className="fa-solid fa-circle-check mt-0.5 text-leaf shrink-0"></i>
                           <span>{h}</span>
                         </li>
                       ))}
@@ -91,16 +91,17 @@ export default async function ProjectsPage() {
                 )}
 
                 {p.goalNote && (
-                  <p className="text-xs md:text-sm text-slate-500 italic mb-5 border-l-2 border-silver pl-3">
+                  <p className="text-xs sm:text-sm text-slate-500 italic mb-5 border-l-2 border-silver pl-3">
                     {p.goalNote}
                   </p>
                 )}
 
                 <Link
                   href="/donate"
-                  className="btn-primary px-6 py-2.5 inline-flex items-center gap-2 text-sm shadow-sm"
+                  className="w-full sm:w-auto btn-primary px-6 py-2.5 inline-flex items-center justify-center gap-2 text-xs sm:text-sm shadow-sm"
                 >
-                  Support This Project <i className="fa-solid fa-arrow-right text-xs"></i>
+                  <span>Support This Project</span>
+                  <i className="fa-solid fa-arrow-right text-xs"></i>
                 </Link>
               </div>
             </div>

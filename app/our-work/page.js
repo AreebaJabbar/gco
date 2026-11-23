@@ -95,15 +95,15 @@ export default function OurWorkPage() {
         bgPosition="center 32%"
       />
 
-      {/* 4. OUR WORK - OUR PROGRAMS (PDF Section 4: Page 8 - 9) */}
-      <section className="py-16 md:py-24">
-        <div className="max-w-[1180px] mx-auto px-6">
+      {/* OUR WORK - OUR PROGRAMS */}
+      <section className="py-12 sm:py-16 md:py-24">
+        <div className="max-w-[1180px] mx-auto px-4 sm:px-6">
           <SectionTitle eyebrow="Humanitarian Service" title="Our Programs" />
-          <p className="text-slate-700 text-center max-w-3xl mx-auto mt-5 mb-12 text-base md:text-lg leading-relaxed">
+          <p className="text-slate-700 text-center max-w-3xl mx-auto mt-4 sm:mt-5 mb-8 sm:mb-12 text-sm sm:text-base md:text-lg leading-relaxed">
             At Global Connection Welfare Organization, our work goes beyond providing temporary assistance. We focus on practical support, empowerment, and sustainable improvements in people&apos;s lives.
           </p>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
             {programs.map((p) => (
               <div
                 key={p.num}
@@ -116,7 +116,7 @@ export default function OurWorkPage() {
                   <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">
                     Program {p.num}
                   </div>
-                  <h3 className="font-display font-bold text-base md:text-lg text-navy mb-2">
+                  <h3 className="font-display font-bold text-base sm:text-lg text-navy mb-2">
                     {p.num}. {p.title}
                   </h3>
                   <p className="text-slate-600 text-sm leading-relaxed">{p.desc}</p>
@@ -127,33 +127,33 @@ export default function OurWorkPage() {
         </div>
       </section>
 
-      {/* OUR COMMITMENT (PDF Section 4: Page 9) */}
-      <section className="py-16 px-5 bg-bgsoft border-y border-silver/30">
-        <div className="max-w-4xl mx-auto bg-white rounded-3xl p-8 md:p-12 card-shadow border border-silver/40 text-center">
+      {/* OUR COMMITMENT */}
+      <section className="py-12 sm:py-16 px-4 sm:px-6 bg-bgsoft border-y border-silver/30">
+        <div className="max-w-4xl mx-auto bg-white rounded-3xl p-6 sm:p-8 md:p-12 card-shadow border border-silver/40 text-center">
           <span className="eyebrow">Dedication &amp; Integrity</span>
-          <h2 className="font-display font-bold text-2xl md:text-3xl text-navy mb-4">
+          <h2 className="font-display font-bold text-2xl sm:text-3xl text-navy mb-4">
             Our Commitment
           </h2>
-          <p className="text-slate-700 text-base md:text-lg leading-relaxed mb-4">
+          <p className="text-slate-700 text-sm sm:text-base md:text-lg leading-relaxed mb-4">
             We are committed to serving humanity with honesty, compassion, and dedication. Every project reflects our belief that even a small act of kindness can make a meaningful difference in someone&apos;s life.
           </p>
-          <p className="text-navy font-bold text-lg md:text-xl leading-relaxed">
+          <p className="text-navy font-bold text-base sm:text-lg md:text-xl leading-relaxed">
             Together, we can build a future filled with hope, dignity, freedom, and opportunity.
           </p>
         </div>
       </section>
 
-      {/* 5. OUR ORGANIZATION – OFFICIAL PROFILE (PDF Section 5: Page 9 - 10) */}
-      <section className="py-16 md:py-24">
-        <div className="max-w-[1180px] mx-auto px-6 space-y-16">
+      {/* OUR ORGANIZATION – OFFICIAL PROFILE */}
+      <section className="py-12 sm:py-16 md:py-24">
+        <div className="max-w-[1180px] mx-auto px-4 sm:px-6 space-y-12 sm:space-y-16">
           {/* Organization Introduction */}
-          <div className="grid lg:grid-cols-2 gap-10 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-center">
             <div>
               <span className="eyebrow">Official Profile</span>
-              <h2 className="font-display font-bold text-2xl md:text-3xl text-navy mb-4">
+              <h2 className="font-display font-bold text-2xl sm:text-3xl text-navy mb-4">
                 Organization Introduction
               </h2>
-              <div className="space-y-4 text-slate-700 text-sm md:text-base leading-relaxed">
+              <div className="space-y-4 text-slate-700 text-sm sm:text-base leading-relaxed">
                 <p>
                   Global Connection Welfare Organization (GCWO), led by its Founder and President, Pastor Qaiser Saleem, is a non-profit, non-political Christian welfare and development organization based in Gujranwala, Punjab, Pakistan.
                 </p>
@@ -170,12 +170,12 @@ export default function OurWorkPage() {
             </div>
 
             {/* Registration and Legal Information */}
-            <div className="bg-bgsoft rounded-2xl p-7 md:p-9 border border-silver/40 card-shadow">
-              <h3 className="font-display font-bold text-xl text-navy mb-5 pb-3 border-b border-silver/30 flex items-center gap-2.5">
+            <div className="bg-bgsoft rounded-2xl p-6 sm:p-8 md:p-9 border border-silver/40 card-shadow">
+              <h3 className="font-display font-bold text-lg sm:text-xl text-navy mb-4 sm:mb-5 pb-3 border-b border-silver/30 flex items-center gap-2.5">
                 <i className="fa-solid fa-stamp text-brand"></i>
                 <span>Registration and Legal Information</span>
               </h3>
-              <ul className="space-y-3.5 text-slate-700 text-sm">
+              <ul className="space-y-3.5 text-slate-700 text-xs sm:text-sm">
                 <li className="flex items-start gap-3">
                   <i className="fa-solid fa-circle-check text-leaf mt-1 shrink-0"></i>
                   <span><strong>Punjab Charity Commission:</strong> Registration No. PB.GRW-9839694700975093</span>
@@ -200,49 +200,49 @@ export default function OurWorkPage() {
             </div>
           </div>
 
-          {/* OUR BOARD OF TRUSTEES (Our Team - PDF Page 10) */}
+          {/* OUR BOARD OF TRUSTEES */}
           <div className="pt-6 border-t border-silver/30">
             <SectionTitle eyebrow="Leadership &amp; Governance" title="Our Board of Trustees" />
-            <div className="grid md:grid-cols-3 gap-6 mt-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 sm:gap-6 mt-8 sm:mt-10">
               {trustees.map((t) => (
                 <div
                   key={t.name}
-                  className="bg-white rounded-2xl p-7 border border-silver/40 card-shadow text-center"
+                  className="bg-white rounded-2xl p-6 sm:p-7 border border-silver/40 card-shadow text-center"
                 >
                   <div className="w-16 h-16 rounded-full bg-navy text-white flex items-center justify-center text-2xl mx-auto mb-4 shadow-sm">
                     <i className={`fa-solid ${t.icon}`}></i>
                   </div>
-                  <h3 className="font-display font-bold text-lg md:text-xl text-navy mb-1.5">
+                  <h3 className="font-display font-bold text-base sm:text-lg md:text-xl text-navy mb-1.5">
                     {t.name}
                   </h3>
-                  <p className="text-brand font-semibold text-sm">{t.role}</p>
+                  <p className="text-brand font-semibold text-xs sm:text-sm">{t.role}</p>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* OUR RECOGNITIONS AND CERTIFICATIONS (PDF Page 10) */}
-          <div className="bg-bgsoft rounded-3xl p-8 md:p-12 border border-silver/40 card-shadow">
+          {/* OUR RECOGNITIONS AND CERTIFICATIONS */}
+          <div className="bg-bgsoft rounded-3xl p-6 sm:p-8 md:p-12 border border-silver/40 card-shadow">
             <div className="max-w-3xl">
               <span className="eyebrow">Transparency &amp; Governance</span>
-              <h2 className="font-display font-bold text-2xl md:text-3xl text-navy mb-3">
+              <h2 className="font-display font-bold text-xl sm:text-2xl md:text-3xl text-navy mb-3">
                 Our Recognitions and Certifications
               </h2>
-              <p className="text-slate-700 text-sm md:text-base leading-relaxed mb-6 font-medium">
+              <p className="text-slate-700 text-xs sm:text-sm md:text-base leading-relaxed mb-4 sm:mb-6 font-medium">
                 We believe in transparency, accountability, and responsible humanitarian service.
               </p>
-              <p className="text-slate-600 text-sm leading-relaxed mb-6">
-                This section will display the organization&apos;s official registration certificates, government approvals, recognition documents, and other relevant certifications.
+              <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6">
+                This section displays the organization&apos;s official registration certificates, government approvals, recognition documents, and other relevant certifications.
               </p>
 
-              <h4 className="font-display font-bold text-sm text-navy uppercase tracking-wider mb-4">
+              <h4 className="font-display font-bold text-xs sm:text-sm text-navy uppercase tracking-wider mb-4">
                 Documents to Display:
               </h4>
-              <div className="grid sm:grid-cols-2 gap-3.5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-3.5">
                 {documentsToDisplay.map((doc) => (
                   <div
                     key={doc}
-                    className="bg-white rounded-xl p-3.5 border border-silver/40 flex items-start gap-3 text-sm text-slate-700"
+                    className="bg-white rounded-xl p-3.5 border border-silver/40 flex items-start gap-3 text-xs sm:text-sm text-slate-700"
                   >
                     <i className="fa-solid fa-file-circle-check text-leaf mt-0.5 text-base shrink-0"></i>
                     <span>{doc}</span>

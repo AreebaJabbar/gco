@@ -49,14 +49,15 @@ export default function ContactForm() {
     }
   };
 
-  const input = 'w-full border border-slate-200 rounded-md px-4 py-2.5 text-sm outline-none focus:border-brand transition-colors';
-  const label = 'text-sm font-medium text-slate-700 block mb-1';
+  const input =
+    'w-full border border-slate-200 rounded-lg px-3.5 sm:px-4 py-2.5 text-sm sm:text-base md:text-sm outline-none focus:border-brand focus:ring-2 focus:ring-brand/15 transition-all';
+  const label = 'text-xs sm:text-sm font-semibold text-slate-700 block mb-1.5';
 
   return (
-    <form onSubmit={submit} className="space-y-5">
+    <form onSubmit={submit} className="space-y-4 sm:space-y-5">
       {status.message && (
         <div
-          className={`p-4 rounded-lg text-sm flex items-start gap-3 transition-all ${
+          className={`p-4 rounded-xl text-xs sm:text-sm flex items-start gap-3 transition-all ${
             status.type === 'success'
               ? 'bg-emerald-50 border border-emerald-200 text-emerald-800'
               : 'bg-rose-50 border border-rose-200 text-rose-800'
@@ -64,16 +65,14 @@ export default function ContactForm() {
         >
           <i
             className={`fa-solid mt-0.5 ${
-              status.type === 'success'
-                ? 'fa-circle-check text-emerald-600'
-                : 'fa-triangle-exclamation text-rose-600'
+              status.type === 'success' ? 'fa-circle-check text-emerald-600' : 'fa-triangle-exclamation text-rose-600'
             }`}
           ></i>
           <span className="leading-relaxed">{status.message}</span>
         </div>
       )}
 
-      <div className="grid md:grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
         <div>
           <label className={label}>Full Name *</label>
           <input
@@ -131,7 +130,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={loading}
-        className="w-full btn-primary py-3 inline-flex items-center justify-center gap-2 transition-all disabled:opacity-70 disabled:cursor-not-allowed"
+        className="w-full btn-primary py-3 sm:py-3.5 inline-flex items-center justify-center gap-2 text-sm sm:text-base transition-all disabled:opacity-70 disabled:cursor-not-allowed shadow-sm"
       >
         {loading ? (
           <>
@@ -146,7 +145,7 @@ export default function ContactForm() {
         )}
       </button>
 
-      <p className="text-center text-xs text-slate-400">
+      <p className="text-center text-[11px] sm:text-xs text-slate-400">
         Your information is kept private and will only be used to respond to your inquiry.
       </p>
     </form>

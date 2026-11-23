@@ -101,17 +101,17 @@ export default function DonateExperience({ campaigns, paymentMethods, whatsapp, 
   };
 
   const inputCls =
-    'w-full rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 outline-none focus:border-brand focus:ring-2 focus:ring-brand/15 transition-colors';
+    'w-full rounded-lg border border-slate-200 bg-white px-3.5 sm:px-4 py-2.5 text-sm sm:text-base md:text-sm text-slate-800 placeholder:text-slate-400 outline-none focus:border-brand focus:ring-2 focus:ring-brand/15 transition-colors';
 
   return (
-    <section className="py-14 px-5 max-w-7xl mx-auto">
-      <div className="grid lg:grid-cols-[1fr,340px] gap-10 items-start">
+    <section className="py-10 sm:py-14 px-4 sm:px-6 max-w-7xl mx-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr,340px] gap-8 lg:gap-10 items-start">
         {/* Left Interactive Donation Form */}
-        <form onSubmit={handleSubmit} className="space-y-8">
+        <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
           {/* 1. Choose Donation Type */}
           <div>
-            <h2 className="font-display font-bold text-lg text-navy mb-3.5">1. Choose Donation Type</h2>
-            <div className="grid sm:grid-cols-3 gap-3">
+            <h2 className="font-display font-bold text-base sm:text-lg text-navy mb-3">1. Choose Donation Type</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3">
               {DONATION_TYPES.map((type) => {
                 const active = donationType.id === type.id;
                 return (
@@ -119,7 +119,7 @@ export default function DonateExperience({ campaigns, paymentMethods, whatsapp, 
                     key={type.id}
                     type="button"
                     onClick={() => setDonationType(type)}
-                    className={`rounded-lg border px-4 py-3 text-sm font-semibold transition-all ${
+                    className={`rounded-lg border px-3 sm:px-4 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold transition-all ${
                       active
                         ? 'bg-navy border-navy text-white shadow-sm'
                         : 'bg-white border-slate-200 text-slate-700 hover:border-brand hover:text-navy'
@@ -134,8 +134,8 @@ export default function DonateExperience({ campaigns, paymentMethods, whatsapp, 
 
           {/* 2. Select Donation Amount (USD) */}
           <div>
-            <h2 className="font-display font-bold text-lg text-navy mb-3.5">2. Select Donation Amount (USD)</h2>
-            <div className="grid grid-cols-3 sm:grid-cols-6 gap-3">
+            <h2 className="font-display font-bold text-base sm:text-lg text-navy mb-3">2. Select Donation Amount (USD)</h2>
+            <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 sm:gap-3">
               {PRESET_AMOUNTS.map((amt) => {
                 const active = !isCustomAmount && selectedAmount === amt;
                 return (
@@ -146,7 +146,7 @@ export default function DonateExperience({ campaigns, paymentMethods, whatsapp, 
                       setIsCustomAmount(false);
                       setSelectedAmount(amt);
                     }}
-                    className={`rounded-lg border py-2.5 px-3 text-sm font-semibold transition-all ${
+                    className={`rounded-lg border py-2.5 px-2 sm:px-3 text-xs sm:text-sm font-semibold transition-all ${
                       active
                         ? 'bg-leaf border-leaf text-white shadow-sm'
                         : 'bg-white border-slate-200 text-slate-700 hover:border-leaf hover:text-navy'
@@ -159,7 +159,7 @@ export default function DonateExperience({ campaigns, paymentMethods, whatsapp, 
               <button
                 type="button"
                 onClick={() => setIsCustomAmount(true)}
-                className={`rounded-lg border py-2.5 px-3 text-sm font-semibold transition-all ${
+                className={`rounded-lg border py-2.5 px-2 sm:px-3 text-xs sm:text-sm font-semibold transition-all ${
                   isCustomAmount
                     ? 'bg-leaf border-leaf text-white shadow-sm'
                     : 'bg-white border-slate-200 text-slate-700 hover:border-leaf hover:text-navy'
@@ -186,8 +186,8 @@ export default function DonateExperience({ campaigns, paymentMethods, whatsapp, 
 
           {/* 3. Choose a Campaign */}
           <div>
-            <h2 className="font-display font-bold text-lg text-navy mb-3.5">3. Choose a Campaign</h2>
-            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+            <h2 className="font-display font-bold text-base sm:text-lg text-navy mb-3">3. Choose a Campaign</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
               {campaigns.map((c) => {
                 const active = activeCampaign?.slug === c.slug;
                 return (
@@ -204,13 +204,13 @@ export default function DonateExperience({ campaigns, paymentMethods, whatsapp, 
                     <div className="relative h-32 w-full bg-bgsoft shrink-0">
                       <img src={c.image} alt={c.title} className="w-full h-full object-cover" />
                       {active && (
-                        <span className="absolute top-2.5 right-2.5 bg-leaf text-white text-[11px] font-semibold px-2.5 py-0.5 rounded-full shadow-sm inline-flex items-center gap-1">
-                          <i className="fa-solid fa-check text-[10px]"></i> Selected
+                        <span className="absolute top-2.5 right-2.5 bg-leaf text-white text-[10px] sm:text-[11px] font-semibold px-2 py-0.5 rounded-full shadow-sm inline-flex items-center gap-1">
+                          <i className="fa-solid fa-check text-[9px]"></i> Selected
                         </span>
                       )}
                     </div>
-                    <div className="p-4 flex-1 flex flex-col w-full">
-                      <div className="font-display font-bold text-sm text-navy leading-snug mb-1.5">{c.title}</div>
+                    <div className="p-3.5 sm:p-4 flex-1 flex flex-col w-full">
+                      <div className="font-display font-bold text-xs sm:text-sm text-navy leading-snug mb-1">{c.title}</div>
                       <p className="text-slate-500 text-xs leading-relaxed line-clamp-2 mb-3">{c.description}</p>
                       <div className="mt-auto w-full">
                         <div className="w-full h-1.5 rounded-full bg-slate-100 overflow-hidden mb-1.5">
@@ -227,8 +227,8 @@ export default function DonateExperience({ campaigns, paymentMethods, whatsapp, 
 
           {/* 4. Your Details */}
           <div>
-            <h2 className="font-display font-bold text-lg text-navy mb-3.5">4. Your Details</h2>
-            <div className="grid sm:grid-cols-2 gap-4">
+            <h2 className="font-display font-bold text-base sm:text-lg text-navy mb-3">4. Your Details</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <input
                 type="text"
                 value={donor.name}
@@ -266,8 +266,8 @@ export default function DonateExperience({ campaigns, paymentMethods, whatsapp, 
 
           {/* 5. Payment Method */}
           <div>
-            <h2 className="font-display font-bold text-lg text-navy mb-3.5">5. Payment Method</h2>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <h2 className="font-display font-bold text-base sm:text-lg text-navy mb-3">5. Payment Method</h2>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3">
               {PAYMENT_TILES.map((tile) => {
                 const active = activeTile.id === tile.id;
                 return (
@@ -275,14 +275,14 @@ export default function DonateExperience({ campaigns, paymentMethods, whatsapp, 
                     key={tile.id}
                     type="button"
                     onClick={() => setSelectedTileId(tile.id)}
-                    className={`rounded-lg py-3.5 px-3 flex flex-col items-center justify-center gap-1.5 text-center transition-all ${
+                    className={`rounded-lg py-3 px-2 sm:px-3 flex flex-col items-center justify-center gap-1.5 text-center transition-all ${
                       active
                         ? 'border-2 border-navy bg-white text-navy shadow-sm'
                         : 'border border-slate-200 bg-white text-slate-600 hover:border-silver hover:text-navy'
                     }`}
                   >
-                    <i className={`${tile.iconClass} text-lg ${active ? 'text-brand' : 'text-slate-500'}`}></i>
-                    <span className={`text-xs font-semibold leading-tight ${active ? 'text-navy' : 'text-slate-700'}`}>
+                    <i className={`${tile.iconClass} text-base sm:text-lg ${active ? 'text-brand' : 'text-slate-500'}`}></i>
+                    <span className={`text-[11px] sm:text-xs font-semibold leading-tight ${active ? 'text-navy' : 'text-slate-700'}`}>
                       {tile.label}
                     </span>
                   </button>
@@ -295,7 +295,7 @@ export default function DonateExperience({ campaigns, paymentMethods, whatsapp, 
           <div>
             <button
               type="submit"
-              className="w-full btn-primary py-3.5 px-6 text-base inline-flex items-center justify-center gap-2.5"
+              className="w-full btn-primary py-3.5 px-6 text-sm sm:text-base inline-flex items-center justify-center gap-2.5 shadow-md"
             >
               <i className="fa-solid fa-heart"></i>
               <span>Donate Now Securely</span>
@@ -310,11 +310,11 @@ export default function DonateExperience({ campaigns, paymentMethods, whatsapp, 
         <aside className="space-y-6 lg:sticky lg:top-28">
           {/* Your Donation Summary */}
           <div className="rounded-xl overflow-hidden card-shadow border border-slate-200 bg-white">
-            <div className="bg-leaf text-white font-display font-semibold px-5 py-3.5 flex items-center gap-2 text-sm sm:text-base">
+            <div className="bg-leaf text-white font-display font-semibold px-4 sm:px-5 py-3.5 flex items-center gap-2 text-sm sm:text-base">
               <i className="fa-solid fa-heart"></i>
               <span>Your Donation Summary</span>
             </div>
-            <div className="p-5 space-y-3 text-sm">
+            <div className="p-4 sm:p-5 space-y-3 text-xs sm:text-sm">
               <div className="flex items-center justify-between gap-3">
                 <span className="text-slate-500">Type</span>
                 <span className="font-semibold text-navy text-right">{donationType.summaryLabel}</span>
@@ -325,7 +325,7 @@ export default function DonateExperience({ campaigns, paymentMethods, whatsapp, 
               </div>
               <div className="flex items-center justify-between gap-3">
                 <span className="text-slate-500">Campaign</span>
-                <span className="font-semibold text-navy text-right">{activeCampaign?.title}</span>
+                <span className="font-semibold text-navy text-right truncate max-w-[170px]">{activeCampaign?.title}</span>
               </div>
               <div className="flex items-center justify-between gap-3">
                 <span className="text-slate-500">Payment</span>
@@ -333,7 +333,7 @@ export default function DonateExperience({ campaigns, paymentMethods, whatsapp, 
               </div>
               <div className="border-t border-slate-100 pt-3 mt-2 flex items-baseline justify-between gap-3">
                 <span className="font-display font-bold text-navy">Total Amount</span>
-                <span className="font-display font-extrabold text-xl text-leaf">
+                <span className="font-display font-extrabold text-lg sm:text-xl text-leaf">
                   ${effectiveAmount.toFixed(2)} <span className="text-xs font-medium text-slate-400">USD</span>
                 </span>
               </div>
@@ -341,9 +341,9 @@ export default function DonateExperience({ campaigns, paymentMethods, whatsapp, 
           </div>
 
           {/* Why Your Donation Matters */}
-          <div className="rounded-xl p-5 text-white bg-navy border border-silver/30 card-shadow">
-            <div className="font-display font-semibold mb-3">Why Your Donation Matters</div>
-            <ul className="space-y-2.5 text-sm text-blue-100">
+          <div className="rounded-xl p-4 sm:p-5 text-white bg-navy border border-silver/30 card-shadow">
+            <div className="font-display font-semibold text-sm sm:text-base mb-3">Why Your Donation Matters</div>
+            <ul className="space-y-2.5 text-xs sm:text-sm text-blue-100">
               <li className="flex gap-2.5 items-start">
                 <i className="fa-solid fa-heart mt-1 text-silver-light"></i>
                 <span>You bring hope and care to orphan children &amp; lonely elders.</span>
@@ -360,9 +360,9 @@ export default function DonateExperience({ campaigns, paymentMethods, whatsapp, 
           </div>
 
           {/* We Accept + WhatsApp */}
-          <div className="rounded-xl border border-slate-200 bg-white p-5 card-shadow space-y-4">
+          <div className="rounded-xl border border-slate-200 bg-white p-4 sm:p-5 card-shadow space-y-4">
             <div>
-              <div className="font-display font-semibold text-sm text-navy mb-3">We Accept</div>
+              <div className="font-display font-semibold text-xs sm:text-sm text-navy mb-3">We Accept</div>
               <div className="grid grid-cols-3 gap-2">
                 {[
                   { id: 'visa', title: 'Card (Visa)', icon: 'fa-brands fa-cc-visa', tileId: 'card' },
@@ -394,7 +394,7 @@ export default function DonateExperience({ campaigns, paymentMethods, whatsapp, 
                 className="w-full rounded-lg bg-[#eefbf3] border border-[#b7e4c7] hover:border-[#22c55e] py-2 px-3 font-semibold text-navy text-xs inline-flex items-center justify-center gap-2 transition-colors"
               >
                 <i className="fa-brands fa-whatsapp text-[#22c55e] text-base"></i>
-                <span>{phone}</span>
+                <span className="truncate">{phone}</span>
               </a>
             </div>
           </div>
@@ -404,7 +404,7 @@ export default function DonateExperience({ campaigns, paymentMethods, whatsapp, 
       {/* Payment Popup Modal */}
       {modalState && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-navy-dark/70 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-navy-dark/70 backdrop-blur-sm"
           onClick={() => setModalState(null)}
         >
           <div
@@ -412,20 +412,20 @@ export default function DonateExperience({ campaigns, paymentMethods, whatsapp, 
             aria-modal="true"
             aria-labelledby="donate-modal-title"
             onClick={(e) => e.stopPropagation()}
-            className="w-full max-w-md rounded-2xl bg-white shadow-2xl border border-silver/50 overflow-hidden"
+            className="w-full max-w-md rounded-2xl bg-white shadow-2xl border border-silver/50 overflow-hidden flex flex-col max-h-[90vh] my-auto"
           >
             {modalState.kind === 'details' ? (
               <>
                 <div
-                  className={`px-5 py-4 text-white flex items-center justify-between gap-3 ${
+                  className={`px-4 sm:px-5 py-3.5 sm:py-4 text-white flex items-center justify-between gap-3 ${
                     modalState.method.headerColor === 'leaf' ? 'bg-leaf' : 'bg-navy'
                   }`}
                 >
-                  <div className="flex items-center gap-3 min-w-0">
-                    <span className="w-9 h-9 rounded-lg bg-white/15 flex items-center justify-center text-base shrink-0">
+                  <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+                    <span className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-white/15 flex items-center justify-center text-sm sm:text-base shrink-0">
                       <i className={`fa-solid ${modalState.method.icon}`}></i>
                     </span>
-                    <h4 id="donate-modal-title" className="font-display font-bold text-base sm:text-lg truncate">
+                    <h4 id="donate-modal-title" className="font-display font-bold text-sm sm:text-base truncate">
                       {modalState.method.modalTitle || modalState.method.label}
                     </h4>
                   </div>
@@ -435,33 +435,33 @@ export default function DonateExperience({ campaigns, paymentMethods, whatsapp, 
                     aria-label="Close popup"
                     className="w-8 h-8 rounded-full bg-white/15 hover:bg-white/25 flex items-center justify-center text-white transition-colors shrink-0"
                   >
-                    <i className="fa-solid fa-xmark"></i>
+                    <i className="fa-solid fa-xmark text-sm"></i>
                   </button>
                 </div>
 
-                <div className="bg-bgsoft border-b border-slate-100 px-5 py-2.5 flex flex-wrap items-center justify-between gap-2 text-xs text-navy">
-                  <span className="font-semibold truncate">{activeCampaign?.title}</span>
+                <div className="bg-bgsoft border-b border-slate-100 px-4 sm:px-5 py-2.5 flex flex-wrap items-center justify-between gap-2 text-xs text-navy">
+                  <span className="font-semibold truncate max-w-[200px]">{activeCampaign?.title}</span>
                   <span className="font-bold text-leaf shrink-0">
                     ${effectiveAmount.toFixed(2)} USD ({donationType.label})
                   </span>
                 </div>
 
-                <div className="divide-y divide-slate-100 max-h-[65vh] overflow-y-auto">
+                <div className="divide-y divide-slate-100 overflow-y-auto max-h-[55vh]">
                   {modalState.method.fields.map((field) => {
                     const key = `${modalState.method.id}-${field.label}`;
                     const isCopied = copiedKey === key;
                     return (
-                      <div key={field.label} className="px-5 py-3.5 flex items-center justify-between gap-4">
-                        <div className="min-w-0">
-                          <div className="text-xs font-medium text-slate-500 mb-0.5">{field.label}</div>
-                          <div className="font-bold text-navy text-sm sm:text-base break-words">{field.value}</div>
-                          {field.subvalue && <div className="text-xs text-slate-500 mt-0.5">{field.subvalue}</div>}
+                      <div key={field.label} className="px-4 sm:px-5 py-3 flex items-center justify-between gap-3 sm:gap-4">
+                        <div className="min-w-0 flex-1">
+                          <div className="text-[11px] font-medium text-slate-500 mb-0.5">{field.label}</div>
+                          <div className="font-bold text-navy text-xs sm:text-sm break-all">{field.value}</div>
+                          {field.subvalue && <div className="text-[11px] text-slate-500 mt-0.5">{field.subvalue}</div>}
                         </div>
                         {field.copyable !== false && (
                           <button
                             type="button"
                             onClick={() => handleCopy(key, field.value)}
-                            className="shrink-0 border border-slate-200 hover:border-silver bg-white hover:bg-bgsoft rounded-lg px-3.5 py-1.5 text-xs font-semibold text-slate-700 inline-flex items-center gap-1.5 transition-colors"
+                            className="shrink-0 border border-slate-200 hover:border-silver bg-white hover:bg-bgsoft rounded-lg px-2.5 sm:px-3 py-1.5 text-xs font-semibold text-slate-700 inline-flex items-center gap-1.5 transition-colors"
                           >
                             <i className={isCopied ? 'fa-solid fa-check text-leaf' : 'fa-regular fa-copy text-slate-500'}></i>
                             <span>{isCopied ? 'Copied' : 'Copy'}</span>
@@ -473,17 +473,17 @@ export default function DonateExperience({ campaigns, paymentMethods, whatsapp, 
                 </div>
 
                 {whatsapp && (
-                  <div className="bg-[#eefbf3] border-t border-[#b7e4c7] px-5 py-4">
-                    <p className="text-xs sm:text-sm text-slate-700 mb-3 leading-relaxed">
+                  <div className="bg-[#eefbf3] border-t border-[#b7e4c7] px-4 sm:px-5 py-3.5 sm:py-4">
+                    <p className="text-xs sm:text-sm text-slate-700 mb-2.5 leading-relaxed">
                       After donating, please send your payment screenshot and your name on WhatsApp:
                     </p>
                     <a
                       href={buildWhatsAppHref(modalState.method.label)}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full rounded-xl bg-[#22c55e] hover:bg-[#16a34a] text-white font-semibold text-sm py-2.5 px-4 inline-flex items-center justify-center gap-2 transition-colors shadow-sm"
+                      className="w-full rounded-xl bg-[#22c55e] hover:bg-[#16a34a] text-white font-semibold text-xs sm:text-sm py-2.5 px-4 inline-flex items-center justify-center gap-2 transition-colors shadow-sm"
                     >
-                      <i className="fa-brands fa-whatsapp text-lg"></i>
+                      <i className="fa-brands fa-whatsapp text-base sm:text-lg"></i>
                       <span>WhatsApp: {phone}</span>
                     </a>
                   </div>
@@ -491,12 +491,12 @@ export default function DonateExperience({ campaigns, paymentMethods, whatsapp, 
               </>
             ) : (
               <>
-                <div className="px-5 py-4 text-white bg-navy flex items-center justify-between gap-3">
-                  <div className="flex items-center gap-3 min-w-0">
-                    <span className="w-9 h-9 rounded-lg bg-white/15 flex items-center justify-center text-base shrink-0">
+                <div className="px-4 sm:px-5 py-3.5 sm:py-4 text-white bg-navy flex items-center justify-between gap-3">
+                  <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+                    <span className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-white/15 flex items-center justify-center text-sm sm:text-base shrink-0">
                       <i className={modalState.tile.iconClass}></i>
                     </span>
-                    <h4 id="donate-modal-title" className="font-display font-bold text-base sm:text-lg truncate">
+                    <h4 id="donate-modal-title" className="font-display font-bold text-sm sm:text-base truncate">
                       {modalState.tile.label} Donation
                     </h4>
                   </div>
@@ -506,18 +506,18 @@ export default function DonateExperience({ campaigns, paymentMethods, whatsapp, 
                     aria-label="Close popup"
                     className="w-8 h-8 rounded-full bg-white/15 hover:bg-white/25 flex items-center justify-center text-white transition-colors shrink-0"
                   >
-                    <i className="fa-solid fa-xmark"></i>
+                    <i className="fa-solid fa-xmark text-sm"></i>
                   </button>
                 </div>
 
-                <div className="bg-bgsoft border-b border-slate-100 px-5 py-2.5 flex flex-wrap items-center justify-between gap-2 text-xs text-navy">
-                  <span className="font-semibold truncate">{activeCampaign?.title}</span>
+                <div className="bg-bgsoft border-b border-slate-100 px-4 sm:px-5 py-2.5 flex flex-wrap items-center justify-between gap-2 text-xs text-navy">
+                  <span className="font-semibold truncate max-w-[200px]">{activeCampaign?.title}</span>
                   <span className="font-bold text-leaf shrink-0">
                     ${effectiveAmount.toFixed(2)} USD ({donationType.label})
                   </span>
                 </div>
 
-                <div className="p-5 space-y-4 text-sm text-slate-600 leading-relaxed">
+                <div className="p-4 sm:p-5 space-y-4 text-xs sm:text-sm text-slate-600 leading-relaxed overflow-y-auto">
                   <p>
                     For international <strong>{modalState.tile.label}</strong> transfers or direct wire/remittance assistance (Wise, Remitly, or Western Union to our Bank Alfalah IBAN), contact us on WhatsApp or view our official bank details below.
                   </p>
@@ -530,7 +530,7 @@ export default function DonateExperience({ campaigns, paymentMethods, whatsapp, 
                         setModalState({ kind: 'details', method: bank });
                       }
                     }}
-                    className="w-full rounded-xl border border-navy text-navy hover:bg-navy hover:text-white font-semibold text-sm py-2.5 px-4 inline-flex items-center justify-center gap-2 transition-colors"
+                    className="w-full rounded-xl border border-navy text-navy hover:bg-navy hover:text-white font-semibold text-xs sm:text-sm py-2.5 px-4 inline-flex items-center justify-center gap-2 transition-colors"
                   >
                     <i className="fa-solid fa-building-columns"></i>
                     <span>View Bank Account &amp; IBAN Details</span>
@@ -538,17 +538,17 @@ export default function DonateExperience({ campaigns, paymentMethods, whatsapp, 
                 </div>
 
                 {whatsapp && (
-                  <div className="bg-[#eefbf3] border-t border-[#b7e4c7] px-5 py-4">
-                    <p className="text-xs sm:text-sm text-slate-700 mb-3 leading-relaxed">
+                  <div className="bg-[#eefbf3] border-t border-[#b7e4c7] px-4 sm:px-5 py-3.5 sm:py-4">
+                    <p className="text-xs sm:text-sm text-slate-700 mb-2.5 leading-relaxed">
                       Message us on WhatsApp to arrange your {modalState.tile.label} gift:
                     </p>
                     <a
                       href={buildWhatsAppHref(modalState.tile.label)}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full rounded-xl bg-[#22c55e] hover:bg-[#16a34a] text-white font-semibold text-sm py-2.5 px-4 inline-flex items-center justify-center gap-2 transition-colors shadow-sm"
+                      className="w-full rounded-xl bg-[#22c55e] hover:bg-[#16a34a] text-white font-semibold text-xs sm:text-sm py-2.5 px-4 inline-flex items-center justify-center gap-2 transition-colors shadow-sm"
                     >
-                      <i className="fa-brands fa-whatsapp text-lg"></i>
+                      <i className="fa-brands fa-whatsapp text-base sm:text-lg"></i>
                       <span>WhatsApp: {phone}</span>
                     </a>
                   </div>
@@ -561,4 +561,3 @@ export default function DonateExperience({ campaigns, paymentMethods, whatsapp, 
     </section>
   );
 }
-

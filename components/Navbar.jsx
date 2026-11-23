@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
@@ -15,96 +15,142 @@ export default function Navbar() {
     return null;
   }
 
+  // Close drawer on path change or escape
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setOpen(false);
+    };
+    if (open) {
+      window.addEventListener('keydown', handleKeyDown);
+    }
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [open]);
+
   const isActive = (href) => (href === '/' ? pathname === '/' : pathname.startsWith(href));
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-100">
-      <div className="max-w-7xl mx-auto px-4 lg:px-6 flex items-center justify-between h-24 gap-4">
-        <Link href="/" className="flex items-center gap-3 shrink-0">
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm transition-all">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 flex items-center justify-between h-18 sm:h-20 md:h-24 gap-2 sm:gap-4">
+        {/* Logo & Foundation Name */}
+        <Link href="/" className="flex items-center gap-2 sm:gap-3 shrink-0 min-w-0">
           <Image
             src="/assets/logo.png"
             alt={`${site.name} ${site.country}`}
             width={80}
             height={80}
-            className="object-contain w-16 h-16 md:w-20 md:h-20 rounded-full"
+            className="object-contain w-11 h-11 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 rounded-full shrink-0"
             priority
           />
-          <div className="leading-tight whitespace-nowrap">
-            <div className="font-display font-bold text-base md:text-lg text-navy">
-              Global Connection <span className="text-leaf"> <br />Welfare Organization</span>
+          <div className="leading-tight">
+            <div className="font-display font-bold text-xs sm:text-base md:text-lg text-navy tracking-tight">
+              Global Connection
+              <span className="text-leaf block text-[11px] sm:text-sm md:text-base font-semibold">
+                Welfare Organization
+              </span>
             </div>
           </div>
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-5 xl:gap-7 text-sm">
+        {/* Desktop Navigation Links (>= lg: 1024px) */}
+        <nav className="hidden lg:flex items-center gap-4 xl:gap-6 text-sm">
           {navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className={`nav-link font-medium ${isActive(item.href) ? 'active text-navy font-semibold' : 'text-slate-700'
-                }`}
+              className={`nav-link font-medium py-1 ${
+                isActive(item.href) ? 'active text-navy font-semibold' : 'text-slate-700 hover:text-navy'
+              }`}
             >
               {item.label}
             </Link>
           ))}
         </nav>
 
-        <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">
+        {/* Action Buttons & Mobile Hamburger */}
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+          {/* Mobile Quick Donate Button (< sm: 640px) */}
           <Link
             href="/donate"
-            className="hidden sm:inline-flex items-center gap-2 btn-primary text-xs md:text-sm px-4 md:px-5 py-2.5 rounded-lg shadow-sm"
+            className="inline-flex sm:hidden items-center gap-1.5 btn-primary text-xs px-2.5 py-1.5 rounded-lg shadow-sm font-semibold"
+          >
+            <i className="fa-solid fa-heart text-[10px]"></i>
+            <span>Donate</span>
+          </Link>
+
+          {/* Tablet & Desktop Donate Button (>= sm: 640px) */}
+          <Link
+            href="/donate"
+            className="hidden sm:inline-flex items-center gap-2 btn-primary text-xs md:text-sm px-3.5 md:px-5 py-2 md:py-2.5 rounded-lg shadow-sm font-semibold"
           >
             <i className="fa-solid fa-heart"></i>
             <span>Donate Now</span>
           </Link>
+
+          {/* Login as Admin Button (Tablet & Desktop >= sm: 640px) */}
           <Link
             href="/admin/login"
-            className="btn-primary inline-flex items-center gap-2 bg-brand hover:bg-brand-dark text-white text-xs md:text-sm font-semibold px-3.5 md:px-4 py-2.5 rounded-lg shadow-sm hover:shadow transition-all"
+            className="hidden sm:inline-flex items-center gap-2 bg-brand hover:bg-brand-dark text-white text-xs md:text-sm font-semibold px-3 md:px-4 py-2 md:py-2.5 rounded-lg shadow-sm hover:shadow transition-all"
           >
             <i className="fa-solid fa-user text-xs"></i>
             <span>Login as Admin</span>
           </Link>
+
+          {/* Hamburger Menu Button (< lg: 1024px) */}
           <button
             type="button"
-            className="lg:hidden text-2xl text-navy ml-1 p-1"
+            className="lg:hidden text-navy p-1.5 sm:p-2 rounded-lg hover:bg-slate-100 transition-colors focus:outline-none"
             onClick={() => setOpen(!open)}
             aria-label="Toggle navigation menu"
+            aria-expanded={open}
           >
-            <i className={`fa-solid ${open ? 'fa-xmark' : 'fa-bars'}`}></i>
+            <i className={`fa-solid ${open ? 'fa-xmark' : 'fa-bars'} text-xl sm:text-2xl block`}></i>
           </button>
         </div>
       </div>
 
+      {/* Mobile Drawer Menu (< lg) */}
       {open && (
-        <div className="lg:hidden border-t border-slate-100 px-5 py-4 flex flex-col gap-3 bg-white text-sm shadow-lg animate-in slide-in-from-top-2 duration-150">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              onClick={() => setOpen(false)}
-              className={`font-medium py-1 ${isActive(item.href) ? 'text-navy font-bold' : 'text-slate-700'
+        <>
+          <div
+            className="fixed inset-0 top-18 sm:top-20 z-40 bg-black/40 backdrop-blur-sm lg:hidden"
+            onClick={() => setOpen(false)}
+            aria-hidden="true"
+          />
+          <div className="relative z-50 lg:hidden border-t border-slate-100 px-4 sm:px-6 py-4 flex flex-col gap-3 bg-white text-sm shadow-xl animate-in slide-in-from-top-2 duration-150">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setOpen(false)}
+                className={`font-medium py-2 px-2 rounded-md transition-colors ${
+                  isActive(item.href) ? 'bg-bgsoft text-navy font-bold' : 'text-slate-700 hover:bg-slate-50'
                 }`}
-            >
-              {item.label}
-            </Link>
-          ))}
-          <div className="pt-2 border-t border-slate-100 flex flex-col gap-2 mt-1">
-            <Link
-              href="/donate"
-              onClick={() => setOpen(false)}
-              className="btn-primary text-center px-5 py-2.5 inline-flex items-center justify-center gap-2 rounded-lg"
-            >
-              <i className="fa-solid fa-heart"></i> Donate Now
-            </Link>
-            <Link
-              href="/admin/login"
-              onClick={() => setOpen(false)}
-              className="bg-brand hover:bg-brand-dark text-white text-center font-semibold px-5 py-2.5 inline-flex items-center justify-center gap-2 rounded-lg transition-colors"
-            >
-              <i className="fa-solid fa-user"></i> Login as Admin
-            </Link>
+              >
+                {item.label}
+              </Link>
+            ))}
+            <div className="pt-3 border-t border-slate-100 flex flex-col gap-2.5 mt-1">
+              <Link
+                href="/donate"
+                onClick={() => setOpen(false)}
+                className="btn-primary text-center px-4 py-2.5 inline-flex items-center justify-center gap-2 rounded-lg font-semibold text-sm"
+              >
+                <i className="fa-solid fa-heart"></i> Donate Now
+              </Link>
+              <Link
+                href="/admin/login"
+                onClick={() => setOpen(false)}
+                className="bg-brand hover:bg-brand-dark text-white text-center font-semibold px-4 py-2.5 inline-flex items-center justify-center gap-2 rounded-lg text-sm transition-colors"
+              >
+                <i className="fa-solid fa-user"></i> Login as Admin
+              </Link>
+            </div>
           </div>
-        </div>
+        </>
       )}
     </header>
   );

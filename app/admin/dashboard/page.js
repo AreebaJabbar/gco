@@ -63,9 +63,9 @@ export default function AdminDashboardPage() {
   }, []);
 
   return (
-    <div className="p-6 md:p-10 space-y-8 max-w-7xl w-full mx-auto">
+    <div className="p-4 sm:p-6 md:p-10 space-y-6 sm:space-y-8 max-w-7xl w-full mx-auto">
       {/* Top Header Bar */}
-      <div className="flex items-center justify-between pb-3 border-b border-slate-200">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-slate-200 gap-3">
         <div>
           <h1 className="font-display font-bold text-2xl md:text-3xl text-navy">
             Dashboard
@@ -76,9 +76,9 @@ export default function AdminDashboardPage() {
         </div>
 
         {/* User profile with circular icon and email - Brand Colors */}
-        <div className="flex items-center gap-2.5 bg-white px-4 py-2 rounded-full border border-silver/40 shadow-sm ring-1 ring-brand/10">
-          <i className="fa-solid fa-circle-user text-xl text-brand"></i>
-          <span className="text-xs md:text-sm font-semibold text-navy">
+        <div className="self-start sm:self-auto flex items-center gap-2.5 bg-white px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full border border-silver/40 shadow-sm ring-1 ring-brand/10">
+          <i className="fa-solid fa-circle-user text-lg sm:text-xl text-brand"></i>
+          <span className="text-xs md:text-sm font-semibold text-navy max-w-[200px] truncate">
             {adminUser.email || adminUser.username}
           </span>
         </div>

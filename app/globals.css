@@ -14,7 +14,29 @@
   --bg-soft: #f2f6fb;
 }
 
-body { font-family: 'Inter', sans-serif; color: #333; background: #fff; }
+html {
+  overflow-x: hidden;
+  max-width: 100%;
+  width: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: #333;
+  background: #fff;
+  overflow-x: hidden;
+  max-width: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  -webkit-text-size-adjust: 100%;
+}
+
+img, video, canvas, svg {
+  max-width: 100%;
+  height: auto;
+}
 h1, h2, h3, h4, .font-display { font-family: 'Poppins', sans-serif; }
 
 .btn-primary {

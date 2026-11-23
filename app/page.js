@@ -64,7 +64,7 @@ export default async function HomePage() {
 
   return (
     <>
-      {/* HERO SECTION - PDF Section 1: Headline & Subheading */}
+      {/* HERO SECTION - Responsive across mobile, tablet, and desktop */}
       <section className="relative overflow-hidden border-b-2 border-silver/40 bg-navy-dark">
         <img
           src="/assets/hero-home-bg.jpg"
@@ -75,27 +75,34 @@ export default async function HomePage() {
           className="absolute inset-0"
           style={{
             backgroundImage:
-              'radial-gradient(rgba(220,224,229,.10) 2px, transparent 2px), linear-gradient(105deg, rgba(1,22,72,0.90) 0%, rgba(6,36,99,0.72) 48%, rgba(5,78,160,0.40) 100%)',
+              'radial-gradient(rgba(220,224,229,.10) 2px, transparent 2px), linear-gradient(105deg, rgba(1,22,72,0.92) 0%, rgba(6,36,99,0.76) 48%, rgba(5,78,160,0.45) 100%)',
             backgroundSize: '24px 24px, 100% 100%',
           }}
         />
-        <div className="relative z-10 max-w-7xl mx-auto px-5 py-20 md:py-28">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 md:py-28">
           <div className="max-w-3xl text-white">
-            <div className="text-xs tracking-[3px] font-semibold text-silver-light mb-4 uppercase drop-shadow-sm">
+            <div className="text-[11px] sm:text-xs tracking-[2px] sm:tracking-[3px] font-semibold text-silver-light mb-3 sm:mb-4 uppercase drop-shadow-sm">
               Global Connection Welfare Organization
             </div>
-            <h1 className="font-display font-extrabold text-4xl md:text-6xl leading-tight drop-shadow-sm">
+            <h1 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.15] drop-shadow-sm">
               Spreading Love, Restoring Hope, Transforming Lives
             </h1>
-            <p className="text-slate-100 mt-5 max-w-2xl drop-shadow-sm text-base md:text-lg leading-relaxed">
+            <p className="text-slate-100 mt-4 sm:mt-5 max-w-2xl drop-shadow-sm text-sm sm:text-base md:text-lg leading-relaxed">
               Serving vulnerable communities across Pakistan through education, shelter, healthcare, community development, and freedom from bonded labour.
             </p>
-            <div className="flex flex-wrap items-center gap-4 mt-8">
-              <Link href="/donate" className="btn-primary px-7 py-3 inline-flex items-center gap-2">
-                <i className="fa-solid fa-heart"></i> Donate Now
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 mt-6 sm:mt-8">
+              <Link
+                href="/donate"
+                className="btn-primary px-6 sm:px-7 py-3 inline-flex items-center justify-center gap-2 text-center text-sm sm:text-base"
+              >
+                <i className="fa-solid fa-heart"></i>
+                <span>Donate Now</span>
               </Link>
-              <Link href="/projects" className="btn-outline-white px-7 py-3 inline-flex items-center gap-2">
-                Our Projects
+              <Link
+                href="/projects"
+                className="btn-outline-white px-6 sm:px-7 py-3 inline-flex items-center justify-center gap-2 text-center text-sm sm:text-base"
+              >
+                <span>Our Projects</span>
               </Link>
             </div>
           </div>
@@ -104,22 +111,24 @@ export default async function HomePage() {
 
       {/* STATS */}
       <section className="bg-white shadow-md border-b border-silver/30 relative z-10">
-        <div className="max-w-6xl mx-auto px-5 py-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div className="max-w-6xl mx-auto px-4 sm:px-5 py-6 sm:py-8 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-center">
           {stats.map((s) => (
-            <div key={s.l}>
-              <div className="text-2xl md:text-3xl font-display font-extrabold text-navy">{s.n}</div>
-              <div className="text-muted text-sm mt-1">{s.l}</div>
+            <div key={s.l} className="px-1">
+              <div className="text-xl sm:text-2xl md:text-3xl font-display font-extrabold text-navy break-words">
+                {s.n}
+              </div>
+              <div className="text-muted text-xs sm:text-sm mt-1 leading-snug">{s.l}</div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* OUR JOURNEY – SERVING SINCE 2014 (PDF Page 1) */}
-      <section className="py-16 px-5 max-w-6xl mx-auto">
-        <div className="grid lg:grid-cols-12 gap-10 items-center">
-          <div className="lg:col-span-7 space-y-4 text-slate-700 leading-relaxed text-sm md:text-base">
+      {/* OUR JOURNEY – SERVING SINCE 2014 */}
+      <section className="py-12 sm:py-16 px-4 sm:px-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+          <div className="lg:col-span-7 space-y-4 text-slate-700 leading-relaxed text-sm sm:text-base">
             <span className="eyebrow">Serving Since 2014</span>
-            <h2 className="font-display font-bold text-3xl md:text-4xl text-navy mb-4">
+            <h2 className="font-display font-bold text-2xl sm:text-3xl md:text-4xl text-navy mb-4">
               Our Journey – Serving Since 2014
             </h2>
             <p>
@@ -149,33 +158,35 @@ export default async function HomePage() {
               <img
                 src="/assets/about-story.jpg"
                 alt="Our Journey – Serving Since 2014"
-                className="w-full h-80 lg:h-[420px] object-cover"
+                className="w-full h-64 sm:h-80 lg:h-[420px] object-cover"
               />
             </div>
           </div>
         </div>
       </section>
 
-      {/* OUR MAIN OBJECTIVE (PDF Page 1 - 2) */}
-      <section className="py-14 px-5 bg-bgsoft border-y border-silver/30">
+      {/* OUR MAIN OBJECTIVE */}
+      <section className="py-12 sm:py-14 px-4 sm:px-6 bg-bgsoft border-y border-silver/30">
         <div className="max-w-5xl mx-auto text-center">
           <span className="eyebrow">Purpose &amp; Goals</span>
-          <h2 className="font-display font-bold text-3xl text-navy mb-6">Our Main Objective</h2>
-          <div className="bg-white rounded-2xl p-8 md:p-10 card-shadow border border-silver/40 text-left space-y-4">
-            <p className="text-slate-700 text-base md:text-lg leading-relaxed">
+          <h2 className="font-display font-bold text-2xl sm:text-3xl text-navy mb-5 sm:mb-6">
+            Our Main Objective
+          </h2>
+          <div className="bg-white rounded-2xl p-6 sm:p-8 md:p-10 card-shadow border border-silver/40 text-left space-y-4">
+            <p className="text-slate-700 text-sm sm:text-base md:text-lg leading-relaxed">
               To uplift the most vulnerable people in Pakistan, including orphaned children, neglected elderly people, families affected by bonded labour, disadvantaged women, and underprivileged communities.
             </p>
-            <p className="text-slate-700 text-base md:text-lg leading-relaxed">
+            <p className="text-slate-700 text-sm sm:text-base md:text-lg leading-relaxed">
               We strive to provide essential needs, education, healthcare, shelter, freedom, and opportunities for empowerment so that every individual can live with dignity, independence, and hope for a better future.
             </p>
           </div>
         </div>
       </section>
 
-      {/* OUR PROJECTS - Section 1: Serving With Love – Our 7 Life-Changing Projects */}
-      <section className="py-16 px-5 max-w-7xl mx-auto">
+      {/* OUR PROJECTS - Serving With Love */}
+      <section className="py-12 sm:py-16 px-4 sm:px-6 max-w-7xl mx-auto">
         <SectionTitle eyebrow="What We Do" title="Serving With Love – Our 7 Life-Changing Projects" />
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 sm:mt-10">
           {homeProjects.map((p) => (
             <div
               key={p.num}
@@ -185,7 +196,7 @@ export default async function HomePage() {
                 <div className="w-12 h-12 rounded-xl bg-brand text-white flex items-center justify-center text-xl mb-4 shadow-sm">
                   <i className={`fa-solid ${p.icon}`}></i>
                 </div>
-                <h3 className="font-display font-bold text-lg text-navy mb-2">
+                <h3 className="font-display font-bold text-base sm:text-lg text-navy mb-2">
                   {p.num}. {p.title}
                 </h3>
                 <p className="text-slate-600 text-sm leading-relaxed">{p.desc}</p>
@@ -220,12 +231,12 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* A MESSAGE FROM OUR FOUNDER (PDF Page 2 - 3) */}
-      <section className="py-16 px-5 bg-bgsoft border-y border-silver/30">
-        <div className="max-w-5xl mx-auto bg-white rounded-3xl p-8 md:p-12 card-shadow border border-silver/40">
+      {/* A MESSAGE FROM OUR FOUNDER */}
+      <section className="py-12 sm:py-16 px-4 sm:px-6 bg-bgsoft border-y border-silver/30">
+        <div className="max-w-5xl mx-auto bg-white rounded-3xl p-6 sm:p-8 md:p-12 card-shadow border border-silver/40">
           <div className="max-w-3xl">
             <span className="eyebrow">Leadership</span>
-            <h2 className="font-display font-bold text-2xl md:text-3xl text-navy mb-2">
+            <h2 className="font-display font-bold text-2xl sm:text-3xl text-navy mb-2">
               A Message from Our Founder
             </h2>
             <div className="text-slate-700 text-sm font-semibold mb-6">
@@ -234,7 +245,7 @@ export default async function HomePage() {
               Global Connection Welfare Organization
             </div>
 
-            <div className="space-y-4 text-slate-700 text-sm md:text-base leading-relaxed border-l-4 border-brand pl-5">
+            <div className="space-y-4 text-slate-700 text-sm sm:text-base leading-relaxed border-l-4 border-brand pl-4 sm:pl-5">
               <p className="font-semibold text-navy">God bless you!</p>
               <p>My name is Pastor Qaiser Saleem, and I am from Gujranwala, Pakistan.</p>
               <p>
@@ -257,9 +268,9 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* CALL TO ACTION (PDF Page 3) */}
-      <section className="py-16 px-5">
-        <div className="max-w-5xl mx-auto rounded-3xl p-8 md:p-12 text-center bg-navy text-white shadow-xl relative overflow-hidden">
+      {/* CALL TO ACTION */}
+      <section className="py-12 sm:py-16 px-4 sm:px-6">
+        <div className="max-w-5xl mx-auto rounded-3xl p-6 sm:p-8 md:p-12 text-center bg-navy text-white shadow-xl relative overflow-hidden">
           <div
             className="absolute inset-0 opacity-10"
             style={{
@@ -271,31 +282,32 @@ export default async function HomePage() {
             <span className="text-silver-light font-bold text-xs uppercase tracking-widest block mb-3 font-display">
               Call to Action
             </span>
-            <h2 className="font-display font-extrabold text-3xl md:text-4xl mb-4">
+            <h2 className="font-display font-extrabold text-2xl sm:text-3xl md:text-4xl mb-3 sm:mb-4">
               Be the Reason Someone Smiles Today!
             </h2>
-            <p className="text-slate-200 text-base md:text-lg leading-relaxed mb-8">
+            <p className="text-slate-200 text-sm sm:text-base md:text-lg leading-relaxed mb-6 sm:mb-8">
               Your support can provide food, education, shelter, healthcare, and hope to someone in need.
             </p>
             <Link
               href="/donate"
-              className="bg-leaf hover:bg-leaf-dark text-white font-bold text-base px-8 py-3.5 rounded-lg shadow-lg inline-flex items-center gap-2 transition-transform hover:-translate-y-0.5"
+              className="w-full sm:w-auto bg-leaf hover:bg-leaf-dark text-white font-bold text-sm sm:text-base px-8 py-3.5 rounded-lg shadow-lg inline-flex items-center justify-center gap-2 transition-transform hover:-translate-y-0.5"
             >
-              <i className="fa-solid fa-heart"></i> Donate Now
+              <i className="fa-solid fa-heart"></i>
+              <span>Donate Now</span>
             </Link>
           </div>
         </div>
       </section>
 
       {/* CHRISTMAS APPEAL */}
-      <section className="py-16 px-5 max-w-5xl mx-auto border-t border-silver/30">
+      <section className="py-12 sm:py-16 px-4 sm:px-6 max-w-5xl mx-auto border-t border-silver/30">
         <SectionTitle eyebrow="Christmas 2026" title={appeal.title} />
-        <p className="text-slate-600 leading-relaxed text-center max-w-3xl mx-auto mt-6 mb-8">
+        <p className="text-slate-600 leading-relaxed text-center max-w-3xl mx-auto mt-5 mb-8 text-sm sm:text-base">
           We humbly invite you to share the joy of Christmas with {appeal.forWhom}, by providing new clothes, warm wear and a special festive celebration. Contribute whatever you can easily give.
         </p>
         <AppealTable />
         <div className="text-center mt-8">
-          <Link href="/donate" className="btn-primary px-7 py-3 inline-flex items-center gap-2">
+          <Link href="/donate" className="btn-primary px-7 py-3 inline-flex items-center justify-center gap-2 text-sm sm:text-base">
             <i className="fa-solid fa-heart"></i> I Want to Help
           </Link>
         </div>
