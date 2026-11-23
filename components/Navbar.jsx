@@ -36,19 +36,19 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm transition-all">
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 flex items-center justify-between h-18 sm:h-20 md:h-24 gap-2 sm:gap-4">
         {/* Logo & Foundation Name */}
-        <Link href="/" className="flex items-center gap-2 sm:gap-3 shrink-0 min-w-0">
+        <Link href="/" className="flex items-center gap-1.5 sm:gap-3 shrink-0 min-w-0">
           <Image
             src="/assets/logo.png"
             alt={`${site.name} ${site.country}`}
             width={80}
             height={80}
-            className="object-contain w-11 h-11 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 rounded-full shrink-0"
+            className="object-contain w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 rounded-full shrink-0"
             priority
           />
           <div className="leading-tight">
-            <div className="font-display font-bold text-xs sm:text-base md:text-lg text-navy tracking-tight">
+            <div className="font-display font-bold text-[11px] sm:text-base md:text-lg text-navy tracking-tight">
               Global Connection
-              <span className="text-leaf block text-[11px] sm:text-sm md:text-base font-semibold">
+              <span className="text-leaf block text-[10px] sm:text-sm md:text-base font-semibold">
                 Welfare Organization
               </span>
             </div>
@@ -71,38 +71,29 @@ export default function Navbar() {
         </nav>
 
         {/* Action Buttons & Mobile Hamburger */}
-        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-          {/* Mobile Quick Donate Button (< sm: 640px) */}
+        <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
+          {/* Desktop Only: Donate Now Button (>= lg: 1024px) */}
           <Link
             href="/donate"
-            className="inline-flex sm:hidden items-center gap-1.5 btn-primary text-xs px-2.5 py-1.5 rounded-lg shadow-sm font-semibold"
-          >
-            <i className="fa-solid fa-heart text-[10px]"></i>
-            <span>Donate</span>
-          </Link>
-
-          {/* Tablet & Desktop Donate Button (>= sm: 640px) */}
-          <Link
-            href="/donate"
-            className="hidden sm:inline-flex items-center gap-2 btn-primary text-xs md:text-sm px-3.5 md:px-5 py-2 md:py-2.5 rounded-lg shadow-sm font-semibold"
+            className="hidden lg:inline-flex items-center gap-2 btn-primary text-xs md:text-sm px-4 md:px-5 py-2 md:py-2.5 rounded-lg shadow-sm font-semibold"
           >
             <i className="fa-solid fa-heart"></i>
             <span>Donate Now</span>
           </Link>
 
-          {/* Login as Admin Button (Tablet & Desktop >= sm: 640px) */}
+          {/* Login as Admin Button (Visible on Mobile, Tablet, and Desktop) */}
           <Link
             href="/admin/login"
-            className="hidden sm:inline-flex items-center gap-2 bg-brand hover:bg-brand-dark text-white text-xs md:text-sm font-semibold px-3 md:px-4 py-2 md:py-2.5 rounded-lg shadow-sm hover:shadow transition-all"
+            className="inline-flex items-center gap-1 sm:gap-2 bg-brand hover:bg-brand-dark text-white text-[11px] sm:text-xs md:text-sm font-semibold px-2.5 sm:px-4 py-1.5 sm:py-2.5 rounded-lg shadow-sm hover:shadow transition-all whitespace-nowrap"
           >
-            <i className="fa-solid fa-user text-xs"></i>
+            <i className="fa-solid fa-user text-[10px] sm:text-xs"></i>
             <span>Login as Admin</span>
           </Link>
 
           {/* Hamburger Menu Button (< lg: 1024px) */}
           <button
             type="button"
-            className="lg:hidden text-navy p-1.5 sm:p-2 rounded-lg hover:bg-slate-100 transition-colors focus:outline-none"
+            className="lg:hidden text-navy p-1 sm:p-2 rounded-lg hover:bg-slate-100 transition-colors focus:outline-none"
             onClick={() => setOpen(!open)}
             aria-label="Toggle navigation menu"
             aria-expanded={open}
