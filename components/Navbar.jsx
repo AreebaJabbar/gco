@@ -84,7 +84,7 @@ export default function Navbar() {
           {/* Login as Admin Button (Visible on Mobile, Tablet, and Desktop) */}
           <Link
             href="/admin/login"
-            className="inline-flex items-center gap-1 sm:gap-2 bg-brand hover:bg-brand-dark text-white text-[11px] sm:text-xs md:text-sm font-semibold px-2.5 sm:px-4 py-1.5 sm:py-2.5 rounded-lg shadow-sm hover:shadow transition-all whitespace-nowrap"
+            className="inline-flex items-center gap-1 sm:gap-2 btn-primary text-[11px] sm:text-xs md:text-sm font-semibold px-2.5 sm:px-4 py-1.5 sm:py-2.5 rounded-lg shadow-sm whitespace-nowrap"
           >
             <i className="fa-solid fa-user text-[10px] sm:text-xs"></i>
             <span>Login as Admin</span>
@@ -135,7 +135,7 @@ export default function Navbar() {
               <Link
                 href="/admin/login"
                 onClick={() => setOpen(false)}
-                className="bg-brand hover:bg-brand-dark text-white text-center font-semibold px-4 py-2.5 inline-flex items-center justify-center gap-2 rounded-lg text-sm transition-colors"
+                className="btn-primary text-center px-4 py-2.5 inline-flex items-center justify-center gap-2 rounded-lg font-semibold text-sm"
               >
                 <i className="fa-solid fa-user"></i> Login as Admin
               </Link>
