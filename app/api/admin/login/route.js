@@ -32,7 +32,21 @@ export async function POST(request) {
       .eq('username', username)
       .single();
 
-    if (error || !admin) {
+    if (error) {
+      console.error('[API /api/admin/login DB query error]:', error);
+      if (error.code !== 'PGRST116') {
+        return NextResponse.json(
+          { error: `Database error: ${error.message || 'Failed to query admins table'}` },
+          { status: 500 }
+        );
+      }
+      return NextResponse.json(
+        { error: 'Invalid username or password.' },
+        { status: 401 }
+      );
+    }
+
+    if (!admin) {
       return NextResponse.json(
         { error: 'Invalid username or password.' },
         { status: 401 }

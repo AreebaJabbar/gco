@@ -10,7 +10,7 @@
 const bcrypt = require('bcryptjs');
 
 const username = process.argv[2] || 'admin';
-const password = process.argv[3] || 'AdminPassword123!';
+const password = process.argv[3] || 'admin12345';
 
 async function main() {
   const salt = await bcrypt.genSalt(10);

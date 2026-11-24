@@ -87,10 +87,10 @@ USING (bucket_id = 'uploads');
 
 -- 8. INITIAL ADMIN USER SEED
 -- Default Username: admin
--- Default Password: AdminPassword123!
--- Verified Bcrypt Hash (rounds=10) for 'AdminPassword123!':
+-- Default Password: admin12345
+-- Verified Bcrypt Hash (rounds=10) for 'admin12345':
 INSERT INTO admins (username, password)
-VALUES ('admin', '$2b$10$h8oNDPgfV5fluU5JcDSDS.muIIeQamFZp.nlnt89rWv5sgdUehgdq')
-ON CONFLICT (username) DO NOTHING;
+VALUES ('admin', '$2b$10$odPQTWVbhJpiyy0pQUrKauzoMlohfO8y0PefBoK5W/GSSd6HuYuou')
+ON CONFLICT (username) DO UPDATE SET password = EXCLUDED.password;
 
 -- (To generate your own custom admin password hash, run: node scripts/seed-admin.js <username> <password>)
