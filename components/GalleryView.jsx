@@ -50,15 +50,6 @@ export default function GalleryView({ initialImages = [] }) {
     return images.filter((img) => img.category === activeCategory);
   }, [images, activeCategory]);
 
-  // Counts per category for the filter buttons
-  const categoryCounts = useMemo(() => {
-    const counts = { All: images.length };
-    GALLERY_CATEGORIES.forEach((cat) => {
-      counts[cat] = images.filter((img) => img.category === cat).length;
-    });
-    return counts;
-  }, [images]);
-
   // Lightbox keyboard controls
   useEffect(() => {
     if (lightboxIndex === null) return undefined;
@@ -91,8 +82,6 @@ export default function GalleryView({ initialImages = [] }) {
       <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-10 sm:mb-14">
         {['All', ...GALLERY_CATEGORIES].map((category) => {
           const isActive = activeCategory === category;
-          const count = categoryCounts[category] || 0;
-          const icon = CATEGORY_ICONS[category] || 'fa-image';
 
           return (
             <button
@@ -102,21 +91,13 @@ export default function GalleryView({ initialImages = [] }) {
                 setActiveCategory(category);
                 setLightboxIndex(null);
               }}
-              className={`rounded-full px-4 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold transition-all duration-200 inline-flex items-center gap-2 border shadow-sm ${
+              className={`rounded-full px-5 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold transition-all duration-200 inline-flex items-center justify-center border shadow-sm ${
                 isActive
                   ? 'bg-navy border-navy text-white shadow-md scale-[1.02]'
                   : 'bg-white border-slate-200 text-slate-700 hover:border-brand hover:text-navy hover:bg-slate-50'
               }`}
             >
-              <i className={`fa-solid ${icon} text-[11px] sm:text-xs`}></i>
               <span>{category}</span>
-              <span
-                className={`text-[10px] sm:text-[11px] px-2 py-0.5 rounded-full font-bold ${
-                  isActive ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-600'
-                }`}
-              >
-                {count}
-              </span>
             </button>
           );
         })}
