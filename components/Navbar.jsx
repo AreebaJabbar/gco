@@ -10,11 +10,6 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
-  // Hide public navbar on all admin routes
-  if (pathname?.startsWith('/admin')) {
-    return null;
-  }
-
   // Close drawer on path change or escape
   useEffect(() => {
     setOpen(false);
@@ -29,6 +24,11 @@ export default function Navbar() {
     }
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [open]);
+
+  // Hide public navbar on all admin routes (placed after hooks to prevent hook count mismatch)
+  if (pathname?.startsWith('/admin')) {
+    return null;
+  }
 
   const isActive = (href) => (href === '/' ? pathname === '/' : pathname.startsWith(href));
 
