@@ -20,37 +20,37 @@ export default async function HomePage() {
   const homeProjects = [
     {
       num: '1',
-      title: 'Source of Life Friendly Church',
+      title: 'Church',
       desc: 'Promoting faith, spiritual growth, worship, and fellowship through church services, Bible studies, and community outreach.',
       icon: 'fa-church',
     },
     {
       num: '2',
-      title: 'Source of Life Friendly Home Orphanage',
+      title: 'Orphanage',
       desc: 'Providing orphaned children with shelter, nutritious food, education, healthcare, protection, and loving care.',
       icon: 'fa-house',
     },
     {
       num: '3',
-      title: 'Source of Life Friendly Old Age Home',
+      title: 'Old Age Home',
       desc: 'The building and material are already ready. We have not started yet because this project needs regular medical support, medicines, and care staff, which is very expensive in Pakistan.',
       icon: 'fa-person-cane',
     },
     {
       num: '4',
-      title: 'Source of Life Friendly Brick Kiln Freedom Project',
+      title: 'Brick Kiln Freedom Project',
       desc: 'Supporting families affected by bonded labour through freedom initiatives, education, vocational training, and healthcare.',
       icon: 'fa-dove',
     },
     {
       num: '5',
-      title: 'Fullness Reformed Community Development Institute',
+      title: 'Community Development Institute',
       desc: 'Empowering youth and women through computer education, English language courses, and vocational skills training.',
       icon: 'fa-chalkboard-user',
     },
     {
       num: '6',
-      title: 'Source of Life Friendly Outreach',
+      title: 'Outreach',
       desc: 'Brings love, prayer and practical help to families and villages through evangelism, prayer visits, food and Bible distribution, health and education awareness, support for widows, disabled and homeless families, youth fellowship, and emergency relief.',
       icon: 'fa-hands-holding-child',
     },
@@ -85,10 +85,10 @@ export default async function HomePage() {
               Global Connection Welfare Organization
             </div>
             <h1 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.15] drop-shadow-sm">
-              Spreading Love, Restoring Hope, Transforming Lives
+              Serving Humanity, Sharing God&apos;s Love.
             </h1>
             <p className="text-slate-100 mt-4 sm:mt-5 max-w-2xl drop-shadow-sm text-sm sm:text-base md:text-lg leading-relaxed">
-              Serving vulnerable communities across Pakistan through education, shelter, healthcare, community development, and freedom from bonded labour.
+              Transforming vulnerable communities across Pakistan through education, shelter, healthcare, community development, and liberation from bonded labour.
             </p>
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 mt-6 sm:mt-8">
               <Link
@@ -132,7 +132,10 @@ export default async function HomePage() {
               Our Journey – Serving Since 2014
             </h2>
             <p>
-              Global Connection Welfare Organization (GCWO) has been serving vulnerable communities in Pakistan since 2014 with a heartfelt commitment to helping the poor, the forgotten, and the oppressed.
+              Global Connection Welfare Organization (GCWO)Global Connection Welfare Organization (GCWO) is proudly serving vulnerable communities in Pakistan since 2014, with a heartfelt commitment to helping the poor, the forgotten, and the oppressed.
+            </p>
+            <p>
+              GCWO is the founder of Source of Life Friendly Home Shelters — a project that includes the First Christian Orphanage in Gujranwala, Pakistan, presently caring for 29 daughters, and the First Christian Old Age Home in Gujranwala, established to restore dignity, love, and respect to abandoned and lonely elderly mothers and fathers.
             </p>
             <p>
               Our journey began in the rural areas of Punjab with simple yet meaningful initiatives, including Bible distribution, food assistance for hungry families, and free education for underprivileged children who had little or no access to schooling.
@@ -141,16 +144,19 @@ export default async function HomePage() {
               With limited resources but strong faith and determination, we travelled from village to village and brick kiln to brick kiln, sharing love, hope, compassion, and the Word of God.
             </p>
             <p>
-              In 2023, by the grace of God, we officially established our organization and developed our own centre, marking an important milestone in our journey.
+              In 2023, by the grace of God, we officially established our organization and developed our own centre, marking an important milestone in our journey. In the same year, we started our Source of Life Friendly Orphanage, giving orphan girls a safe home, education, food, medical care, love, and a bright future. Today, 29 daughters are living under our care like a family.
             </p>
             <p>
-              Today, our organization operates several humanitarian initiatives, including a Church Ministry, Orphanage, Old Age Home, Community Development Centre, Free Ambulance Service, Outreach Program
+              Along with the orphanage, we also started the vision of Old Age Home. The building and material are already ready. We are now working to start it fully, as this project needs regular medical support, medicines, and care staff, which is very expensive in Pakistan.
+            </p>
+            <p>
+              Today, our organization operates several humanitarian initiatives, including Church Ministry, Orphanage, Old Age Home, Community Development Centre, Free Ambulance Service, and Outreach Program.
             </p>
             <p>
               We are also actively working in brick kiln communities through various outreach initiatives, helping families overcome bonded labour, providing free education to children, empowering women through vocational training, and offering medical assistance to vulnerable communities.
             </p>
             <p className="font-semibold text-navy">
-              Our commitment is to continue transforming lives through compassion, service, faith, and sustainable development.
+              Our commitment is to continue transforming lives through compassion, service, faith, and sustainable development — so that no orphan child feels unloved and no elderly person feels abandoned, forgotten, or alone.
             </p>
           </div>
           <div className="lg:col-span-5">
@@ -242,25 +248,12 @@ export default async function HomePage() {
             <div className="text-slate-700 text-sm font-semibold mb-6">
               Pastor Qaiser Saleem<br />
               Founder &amp; President / CEO<br />
-              Global Connection Welfare Organization
+              Global Connection Welfare Organization (GCWO)
             </div>
 
             <div className="space-y-4 text-slate-700 text-sm sm:text-base leading-relaxed border-l-4 border-brand pl-4 sm:pl-5">
-              <p className="font-semibold text-navy">God bless you!</p>
-              <p>My name is Pastor Qaiser Saleem, and I am from Gujranwala, Pakistan.</p>
               <p>
-                When I witnessed a brick kiln child with wounded hands, an elderly mother abandoned on the roadside, and an orphaned girl without food, my heart was deeply moved. I prayed, &quot;God, make me a channel of Your love and blessings.&quot;
-              </p>
-              <p>From that prayer, Global Connection Welfare Organization was born.</p>
-              <p>
-                We started with one meal, one child, and one family. Through God&apos;s grace, our work has grown into seven areas of service: Church Ministry, Orphanage, Old Age Home, Brick Kiln Freedom Project, Community Development Centre, Free Medical Ambulance Service, and Outreach Programs.
-              </p>
-              <p>
-                My dream is simple: No child should go hungry, no elderly person should feel alone, no family should live in slavery, and every woman should have the opportunity to become financially independent.
-              </p>
-              <p>I cannot achieve this mission alone. I need your prayers, love, generosity, and support.</p>
-              <p className="font-semibold text-navy">
-                Together, we can change lives – one heart, one life, and one act of kindness at a time.
+                God bless you! My name is Pastor Qaiser Saleem, and I am from Gujranwala, Pakistan. My journey began with a heartbreaking moment — I saw a brick kiln child with wounded hands, an elderly mother abandoned on the roadside, and an orphaned girl without food. In that moment, my heart broke, and I prayed, &quot;God, make me a channel of Your love and blessings. &quot;From that prayer, Global Connection Welfare Organization was born. We started with one meal, one child, and one family. By God&apos;s grace, today our work has grown into seven life-changing areas of service: Church Ministry, Orphanage, Old Age Home, Brick Kiln Freedom Project, Community Development Centre, Free Ambulance Service, and Outreach Programs. My vision is simple, yet powerful: No child should go hungry. No elderly person should feel alone. No family should live in slavery. Every woman should have the opportunity to become financially independent. I cannot fulfil this mission alone. I need your prayers, your love, your generosity, and your partnership. Together, we can change lives — one heart, one life, and one act of kindness at a time.
               </p>
               <p className="font-bold text-navy pt-2">Pastor Qaiser Saleem</p>
             </div>

@@ -42,7 +42,7 @@ export default function OurWorkPage() {
     },
     {
       num: '6',
-      title: 'Women’s Empowerment Program',
+      title: "Women's Empowerment Program",
       desc: 'Providing vocational training and opportunities for financial independence.',
       icon: 'fa-scissors',
     },
