@@ -25,20 +25,24 @@ export default function GalleryView({ initialImages = [] }) {
   const [lightboxIndex, setLightboxIndex] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  // Fetch updated gallery from API on mount
+  // Sync state if initialImages changes from server
+  useEffect(() => {
+    if (Array.isArray(initialImages)) {
+      setImages(initialImages);
+    }
+  }, [initialImages]);
+
+  // Fetch updated gallery from API on mount to catch any newly uploaded images
   useEffect(() => {
     async function loadGallery() {
       try {
-        setLoading(true);
         const res = await fetch('/api/gallery');
         const json = await res.json();
-        if (json?.data && Array.isArray(json.data) && json.data.length > 0) {
+        if (json?.data && Array.isArray(json.data)) {
           setImages(json.data);
         }
       } catch (err) {
         console.warn('Could not fetch latest gallery images:', err);
-      } finally {
-        setLoading(false);
       }
     }
     loadGallery();

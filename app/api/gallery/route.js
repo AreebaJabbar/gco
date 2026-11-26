@@ -10,13 +10,10 @@ export async function GET(request) {
     const category = searchParams.get('category');
 
     if (!isSupabaseConfigured() || !supabaseAdmin) {
-      const data = category && category !== 'All'
-        ? DEFAULT_GALLERY_IMAGES.filter((item) => item.category === category)
-        : DEFAULT_GALLERY_IMAGES;
       return NextResponse.json({
         success: true,
-        data,
-        source: 'fallback',
+        data: [],
+        source: 'unconfigured',
         table_configured: false,
       });
     }
@@ -35,36 +32,19 @@ export async function GET(request) {
 
     if (error) {
       console.warn('[API /api/gallery GET DB warning]:', error.message);
-      // If table doesn't exist yet (PGRST205), seamlessly serve fallback images
-      const fallbackData = category && category !== 'All'
-        ? DEFAULT_GALLERY_IMAGES.filter((item) => item.category === category)
-        : DEFAULT_GALLERY_IMAGES;
-
       return NextResponse.json({
         success: true,
-        data: fallbackData,
-        source: 'fallback',
+        data: [],
+        source: 'error',
         table_configured: false,
         error_hint: error.message,
       });
     }
 
-    // If table exists but is empty, return default images or empty array
-    if (!data || data.length === 0) {
-      const fallbackData = category && category !== 'All'
-        ? DEFAULT_GALLERY_IMAGES.filter((item) => item.category === category)
-        : DEFAULT_GALLERY_IMAGES;
-      return NextResponse.json({
-        success: true,
-        data: fallbackData,
-        source: 'fallback_empty_table',
-        table_configured: true,
-      });
-    }
-
+    // Only return images uploaded by admin from database
     return NextResponse.json({
       success: true,
-      data,
+      data: data || [],
       source: 'database',
       table_configured: true,
     });
