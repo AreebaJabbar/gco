@@ -34,6 +34,7 @@ export default function AdminLayout({ children }) {
   const navLinks = [
     { label: 'Dashboard', href: '/admin/dashboard', icon: 'fa-gauge' },
     { label: 'Our Projects', href: '/admin/projects', icon: 'fa-folder-open' },
+    { label: 'Gallery', href: '/admin/gallery', icon: 'fa-images' },
     { label: 'Messages', href: '/admin/messages', icon: 'fa-envelope' },
   ];
 

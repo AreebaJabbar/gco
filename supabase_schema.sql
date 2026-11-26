@@ -93,4 +93,31 @@ INSERT INTO admins (username, password)
 VALUES ('admin', '$2b$10$odPQTWVbhJpiyy0pQUrKauzoMlohfO8y0PefBoK5W/GSSd6HuYuou')
 ON CONFLICT (username) DO UPDATE SET password = EXCLUDED.password;
 
+-- 9. GALLERY TABLE (Moments & Activities)
+CREATE TABLE IF NOT EXISTS gallery (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  title TEXT,
+  caption TEXT,
+  image TEXT NOT NULL,
+  category TEXT NOT NULL CHECK (category IN ('Church', 'Fullness Reformed Institute', 'Orphanage', 'Education')),
+  sort_order INT DEFAULT 0,
+  created_at TIMESTAMPTZ DEFAULT timezone('utc'::text, now()) NOT NULL,
+  updated_at TIMESTAMPTZ DEFAULT timezone('utc'::text, now()) NOT NULL
+);
+
+-- Trigger for gallery.updated_at
+DROP TRIGGER IF EXISTS update_gallery_updated_at ON gallery;
+CREATE TRIGGER update_gallery_updated_at
+BEFORE UPDATE ON gallery
+FOR EACH ROW
+EXECUTE FUNCTION update_updated_at_column();
+
+-- Gallery RLS
+ALTER TABLE gallery ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS "Public gallery images are viewable by everyone" ON gallery;
+CREATE POLICY "Public gallery images are viewable by everyone"
+ON gallery FOR SELECT
+USING (true);
+
 -- (To generate your own custom admin password hash, run: node scripts/seed-admin.js <username> <password>)

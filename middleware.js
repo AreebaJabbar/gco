@@ -52,6 +52,12 @@ export async function middleware(request) {
     if (pathname.startsWith('/api/projects/') && method === 'GET') {
       return NextResponse.next();
     }
+    if (pathname === '/api/gallery' && method === 'GET') {
+      return NextResponse.next();
+    }
+    if (pathname.startsWith('/api/gallery/') && method === 'GET') {
+      return NextResponse.next();
+    }
 
     // All other API routes are protected (admin only)
     if (!isAuthenticated) {

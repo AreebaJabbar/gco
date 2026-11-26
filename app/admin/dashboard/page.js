@@ -6,6 +6,7 @@ import Link from 'next/link';
 export default function AdminDashboardPage() {
   const [stats, setStats] = useState({
     totalProjects: 0,
+    totalGalleryImages: 0,
     totalMessages: 0,
     unreadMessages: 0,
     recentMessages: [],
@@ -34,7 +35,17 @@ export default function AdminDashboardPage() {
       const dataProjects = await resProjects.json();
       const projectList = Array.isArray(dataProjects.data) ? dataProjects.data : [];
 
-      // 3. Fetch messages
+      // 3. Fetch gallery
+      let galleryCount = 0;
+      try {
+        const resGallery = await fetch('/api/gallery');
+        const dataGallery = await resGallery.json();
+        if (Array.isArray(dataGallery.data)) {
+          galleryCount = dataGallery.data.length;
+        }
+      } catch {}
+
+      // 4. Fetch messages
       const resMessages = await fetch('/api/messages');
       const dataMessages = await resMessages.json();
       const messageList = Array.isArray(dataMessages.data) ? dataMessages.data : [];
@@ -46,6 +57,7 @@ export default function AdminDashboardPage() {
 
       setStats({
         totalProjects,
+        totalGalleryImages: galleryCount,
         totalMessages,
         unreadMessages,
         recentMessages,
@@ -91,13 +103,16 @@ export default function AdminDashboardPage() {
         </div>
       )}
 
-      {/* 3 Metric Cards Grid (Matching GCO Logo Blue & Navy Palette) */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* 4 Metric Cards Grid (Matching GCO Logo Blue & Navy Palette) */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
         {/* PROJECTS */}
-        <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:border-brand/30 flex flex-col justify-between hover:shadow-md transition-all">
+        <Link
+          href="/admin/projects"
+          className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:border-brand/40 flex flex-col justify-between hover:shadow-md transition-all group"
+        >
           <div className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center justify-between">
             <span>PROJECTS</span>
-            <i className="fa-solid fa-folder-open text-brand/60 text-sm"></i>
+            <i className="fa-solid fa-folder-open text-brand/60 group-hover:text-brand text-sm transition-colors"></i>
           </div>
           <div className="text-3xl md:text-4xl font-extrabold text-navy mt-3">
             {loading ? (
@@ -106,13 +121,34 @@ export default function AdminDashboardPage() {
               stats.totalProjects
             )}
           </div>
-        </div>
+        </Link>
+
+        {/* GALLERY PHOTOS */}
+        <Link
+          href="/admin/gallery"
+          className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:border-brand/40 flex flex-col justify-between hover:shadow-md transition-all group"
+        >
+          <div className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center justify-between">
+            <span>GALLERY PHOTOS</span>
+            <i className="fa-solid fa-images text-brand/60 group-hover:text-brand text-sm transition-colors"></i>
+          </div>
+          <div className="text-3xl md:text-4xl font-extrabold text-navy mt-3">
+            {loading ? (
+              <span className="text-slate-300 animate-pulse text-2xl">...</span>
+            ) : (
+              stats.totalGalleryImages
+            )}
+          </div>
+        </Link>
 
         {/* TOTAL MESSAGES */}
-        <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:border-brand/30 flex flex-col justify-between hover:shadow-md transition-all">
+        <Link
+          href="/admin/messages"
+          className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:border-brand/40 flex flex-col justify-between hover:shadow-md transition-all group"
+        >
           <div className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center justify-between">
             <span>TOTAL MESSAGES</span>
-            <i className="fa-solid fa-envelope text-brand/60 text-sm"></i>
+            <i className="fa-solid fa-envelope text-brand/60 group-hover:text-brand text-sm transition-colors"></i>
           </div>
           <div className="text-3xl md:text-4xl font-extrabold text-navy mt-3">
             {loading ? (
@@ -121,10 +157,13 @@ export default function AdminDashboardPage() {
               stats.totalMessages
             )}
           </div>
-        </div>
+        </Link>
 
-        {/* UNREAD MESSAGES - Logo Blue / Sapphire Highlight */}
-        <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:border-brand/30 flex flex-col justify-between hover:shadow-md transition-all">
+        {/* UNREAD MESSAGES */}
+        <Link
+          href="/admin/messages"
+          className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:border-brand/40 flex flex-col justify-between hover:shadow-md transition-all group"
+        >
           <div className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center justify-between">
             <span>UNREAD MESSAGES</span>
             <i className="fa-solid fa-envelope-circle-check text-brand text-sm"></i>
@@ -136,7 +175,7 @@ export default function AdminDashboardPage() {
               stats.unreadMessages
             )}
           </div>
-        </div>
+        </Link>
       </div>
 
       {/* Recent Messages Card */}
